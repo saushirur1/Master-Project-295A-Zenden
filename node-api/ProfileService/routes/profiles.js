@@ -8,7 +8,7 @@ router.get('/:profile_id',(req,res,next) => {
     const id = req.params.profile_id;
     Profiles.findById(id).exec().then(doc => {
         console.log(doc);
-        res.status(200).json(doc);
+        res.status(200).json(doc['password']);
     }).catch(err => {
         console.log(err);
         res.status(500).json({error: err});
@@ -18,7 +18,7 @@ router.get('/:profile_id',(req,res,next) => {
 router.post('/', (req,res,next) =>
 {
     const profile = new Profiles({
-        primary_id: new mongoose.Types.ObjectId(),
+        _id: new mongoose.Types.ObjectId(),
         name: req.body.name,
         password: req.body.password,
         contactnumber: req.body.contactnumber
@@ -37,7 +37,7 @@ router.post('/', (req,res,next) =>
 
 router.delete('/:profile_id',(req,res,next) =>{
     const id = req.params.profile_id;
-    Profiles.remove({primary_id : id}).exec().then(result =>
+    Profiles.remove({_id : id}).exec().then(result =>
          {
             res.status(200).json(result);
          }).catch(err => {
