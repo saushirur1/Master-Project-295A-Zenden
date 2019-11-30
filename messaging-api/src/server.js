@@ -8,6 +8,7 @@ var users = {};
 var connections = {};
 // Started server to listen on port 3001
 var storeMessageData = require('./StoreMessageData.js')
+let userdata = new storeMessageData()
 
 server.listen(process.env.PORT || 3001, () =>
 {
@@ -38,7 +39,7 @@ io.on('connection',(socket) =>
         }
         else
         {
-            let userdata = new storeMessageData(messageToSend)
+            userdata.storeMessage(usernameToSend,messageToSend)
             callback('Message delivered to server')
         }
     })

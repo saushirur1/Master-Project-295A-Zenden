@@ -7,16 +7,11 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Saurabh Shirur",
-<<<<<<< HEAD
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
+    "mongoose": "^5.7.13",
     "qs": "^6.9.1",
-=======
-  "license": "ISC", 
-  "dependencies": {
-    "express": "^4.17.1",
->>>>>>> dface9ed3bd39d0c631433d8d1232b37588b9a06
     "socket.io": "^2.2.0"
   }
 }
