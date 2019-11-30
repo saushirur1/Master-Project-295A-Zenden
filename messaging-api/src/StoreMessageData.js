@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const MessageSchema = require('../models/messages.js')
-
+//var accessSockets = require('./server.js')
 
 class storeMessageData
 {
@@ -17,7 +17,6 @@ class storeMessageData
 
     storeMessage(sender,messageToStore)
     {
-
         MessageSchema.find({user: sender}, function(err,docs)
         {
             if(docs.length)
@@ -51,6 +50,22 @@ class storeMessageData
             }
         });
     }
+
+    /*
+    retrieveUnsentMessages(userName)
+    {
+        MessageSchema.find({user: userName}, function(err,user)
+        {
+            user.forEach(function(us){
+               us.messages.forEach(function(msgs)
+               {
+                   console.log(msgs);
+                   accessSockets.io.to(accessSockets.users[userName]).emit('message',msg);
+               });
+            });
+        })
+    }*/
+    
 }
 
 module.exports = storeMessageData
